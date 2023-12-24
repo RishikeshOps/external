@@ -1,8 +1,9 @@
 # https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/compute_router_nat
 resource "google_compute_router_nat" "nat" {
-  name   = "nat-gw-router"
-  router = google_compute_router.router.name
-  region = "asia-south2"
+  project = var.project
+  name    = "nat-gw-router"
+  router  = google_compute_router.router.name
+  region  = var.region
 
   source_subnetwork_ip_ranges_to_nat = "LIST_OF_SUBNETWORKS"
   nat_ip_allocate_option             = "MANUAL_ONLY"
@@ -17,9 +18,10 @@ resource "google_compute_router_nat" "nat" {
 
 # https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/compute_address
 resource "google_compute_address" "nat" {
+  project      = var.project
   name         = "nat-gw-address"
   address_type = "EXTERNAL"
   network_tier = "PREMIUM"
-
-  depends_on = [google_project_service.compute]
+  region       = "asia-south2"
+  depends_on   = [google_project_service.compute]
 }
