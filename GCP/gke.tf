@@ -1,5 +1,5 @@
 resource "google_container_cluster" "primary" {
-  project = var.project
+  project  = var.project
   name     = "my-gke-cluster"
   location = "asia-south2-a"
 
@@ -11,8 +11,8 @@ resource "google_container_cluster" "primary" {
 }
 
 resource "google_container_node_pool" "primary_preemptible_nodes" {
-  project = var.project
-  name       = "my-node-pool"
+  project    = var.project
+  name       = "my-node-pool1"
   location   = "asia-south2-b"
   cluster    = google_container_cluster.primary.name
   node_count = 1
@@ -23,7 +23,7 @@ resource "google_container_node_pool" "primary_preemptible_nodes" {
 
     # Google recommends custom service accounts that have cloud-platform scope and permissions granted via IAM Roles.
     service_account = google_service_account.kubernetes.email
-    oauth_scopes    = [
+    oauth_scopes = [
       "https://www.googleapis.com/auth/cloud-platform"
     ]
   }

@@ -2,13 +2,13 @@
 resource "google_project_service" "compute" {
   service            = "compute.googleapis.com"
   project            = var.project
-  disable_on_destroy = true
+  disable_on_destroy = false
 }
 
 resource "google_project_service" "container" {
   service            = "container.googleapis.com"
   project            = var.project
-  disable_on_destroy = true
+  disable_on_destroy = false
 }
 
 # https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/compute_network
