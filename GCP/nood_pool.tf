@@ -1,7 +1,7 @@
 # https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/google_service_account
 resource "google_service_account" "kubernetes" {
-  account_id = "100822605699101554187"
-  project = "market-map-dev"
+  account_id = "my-service-account"
+  project    = var.project
 }
 
 # https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/container_node_pool

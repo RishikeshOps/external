@@ -1,7 +1,7 @@
 # https://www.terraform.io/language/settings/backends/gcs
 terraform {
   backend "gcs" {
-    bucket = "terraform_backend_23-12"
+    bucket = "terraform_backends_23-12"
     prefix = "terraform/state"
   }
   required_providers {
