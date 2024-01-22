@@ -1,0 +1,14 @@
+version: "3"
+services:
+  postgres:
+    image: postgres:alpine
+    environment:
+      POSTGRES_USER: 'dev'
+      POSTGRES_PASSWORD: 'dev_password'
+      POSTGRES_DB: 'db_name'
+    volumes:
+      - ./data:/var/lib/postgresql/data/
+
+volumes:
+  postgres_data:
+    driver: local
